@@ -16,19 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'checkSession'], function () {
         Route::get('/','HomeController@index');
         Route::get('/user', 'UserController@index');
-        Route::get('/list', 'USerController@list');
+        Route::get('/list', 'UserController@list');
         Route::get('/add', 'UserController@tambah');
-        Route::get('/edit{id}', 'UserController@edit');
-        Route::get('menus', 'MenuController@index');
-        Route::get('menus-show', 'MenuController@show');
-        Route::post('menus', 'MenuController@store')->name('menus.store');
-        
+        Route::get('/edit/{id}', 'UserController@edit');
+
         Route::post('/simpan', 'UserController@simpan');
-        Route::post('/update', 'UserController@update');
-        Route::get('sysmnenu', 'MenuController@index');
-        Route::get('sysmenus-show', 'MenuController@show');
-        Route::post('sysmenus', 'MenuController@store')->name('menus.store');
-            
+        Route::post('/update','UserController@update');
+        Route::post('/destroy', 'UserController@destroy');
 });
 
 Route::get('/login','HomeController@login');
